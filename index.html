@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konkurs Mubi x Wazzup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                        url('https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') no-repeat center/cover fixed;
+            color: #FFF;
+            min-height: 100vh;
+        }
+        
+        .title-font {
+            font-family: 'Oswald', sans-serif;
+        }
+        
+        .mubi-button {
+            background: linear-gradient(180deg, #FF5E24 0%, #D03400 100%);
+            border: 1px solid #FF7B4D;
+            box-shadow: 0 4px 0 #A02800;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            letter-spacing: 1px;
+        }
+        
+        .mubi-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #A02800;
+            filter: brightness(1.1);
+        }
+        
+        .step-button {
+            background: linear-gradient(180deg, #FF5E24 0%, #D03400 100%);
+            border: 1px solid #FF7B4D;
+            box-shadow: 0 4px 0 #A02800;
+            transition: all 0.2s;
+        }
+        
+        .step-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #A02800;
+            filter: brightness(1.1);
+        }
+        
+        .form-container {
+            background: rgba(20, 20, 25, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 94, 36, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .prize-item {
+            transition: all 0.3s;
+            background: rgba(30, 30, 35, 0.8);
+            border: 1px solid #444;
+            overflow: hidden;
+        }
+        
+        .prize-item:hover {
+            transform: translateY(-5px);
+            border-color: #FF5E24;
+            box-shadow: 0 10px 20px rgba(255, 94, 36, 0.2);
+        }
+        
+        .prize-image {
+            height: 200px;
+            object-fit: contain;
+            margin: 0 auto;
+            transition: transform 0.3s;
+        }
+        
+        .prize-item:hover .prize-image {
+            transform: scale(1.1);
+        }
+        
+        .input-field {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .input-field:focus {
+            border-color: #FF5E24;
+            box-shadow: 0 0 0 3px rgba(255, 94, 36, 0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .logo-glow {
+            filter: drop-shadow(0 0 10px rgba(255, 94, 36, 0.5));
+        }
+        
+        .countdown {
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 94, 36, 0.7);
+        }
+        
+        .countdown-item {
+            display: inline-block;
+            min-width: 80px;
+        }
+        
+        .prize-quantity {
+            color: #FF5E24;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .prize-image {
+                height: 150px;
+            }
+            
+            .countdown-item {
+                min-width: 60px;
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center p-4">
+    <div class="w-full max-w-4xl">
+        <!-- Nagłówek -->
+        <div class="text-center mb-10 animate__animated animate__fadeInDown">
+            <div class="flex justify-center items-center mb-6 gap-6 flex-wrap">
+                <img src="https://wskoczpokase.pl/wp-content/uploads/2021/03/logo-mubi.png" 
+                     alt="Mubi Logo" 
+                     class="h-24 logo-glow">
+                <span class="text-4xl text-white font-bold mx-4">×</span>
+                <img src="https://yt3.googleusercontent.com/ytc/AIdro_l7fTLK_o6DsXCTK2kVRHPpNUcBRUoz_zFrPAvPXf4iBf0=s900-c-k-c0x00ffffff-no-rj" 
+                     alt="Wazzup Logo" 
+                     class="h-24 rounded-full border-4 border-orange-500 logo-glow">
+            </div>
+            
+            <h1 class="title-font text-4xl md:text-5xl font-bold text-orange-500 mb-4 tracking-wide">
+                KONKURS <span class="text-white">MUBI</span> X <span class="text-white">WAZZUP</span>
+            </h1>
+            
+            <p class="text-xl text-gray-300 mb-6 max-w-2xl mx-auto">
+                Wykonaj kalkulację ubezpieczenia samochodowego zaoszczędź 100 zł i zgarnij nagrody od Wazzupa!
+            </p>
+            
+            <div class="text-orange-300 mb-2">
+                <i class="fas fa-clock mr-2"></i> Konkurs trwa do: <span class="font-bold">30.04.2025</span>
+            </div>
+            <div class="countdown text-orange-400 mb-8" id="countdown">
+                <!-- JavaScript wstawi tutaj odliczanie -->
+            </div>
+            
+            <a href="https://mubi.pl/wazzup150" target="_blank" 
+               class="mubi-button inline-block py-4 px-12 rounded-lg font-bold text-lg animate__animated animate__pulse animate__infinite">
+                WYKONAJ KALKULACJĘ
+            </a>
+        </div>
+        
+        <!-- Sekcja nagród -->
+        <div class="mb-16 text-center animate__animated animate__fadeIn">
+            <h3 class="title-font text-3xl text-orange-500 mb-10 relative inline-block">
+                NAGRODY DO WYGRANIA
+                <span class="absolute bottom-0 left-0 w-full h-1 bg-orange-500 transform translate-y-2"></span>
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="prize-item p-6 rounded-xl">
+                    <div class="bg-gray-800 p-4 rounded-lg mb-4">
+                        <img src="https://wazzupek.pl/cdn/shop/products/01-dywanik-czarny_1024x1024@2x.jpg" 
+                             alt="Dywanik samochodowy" 
+                             class="prize-image">
+                    </div>
+                    <h4 class="title-font text-xl text-orange-500 mb-2">DYWANIK SAMOCHODOWY</h4>
+                    <p class="text-gray-400"></p>
+                    <div class="prize-quantity">Ilość: 5 sztuk</div>
+                </div>
+                
+                <div class="prize-item p-6 rounded-xl">
+                    <div class="bg-gray-800 p-4 rounded-lg mb-4">
+                        <img src="https://wazzupek.pl/cdn/shop/files/free-image-resizer-cropper_81_540x.png" 
+                             alt="Kubek Drutkharini" 
+                             class="prize-image">
+                    </div>
+                    <h4 class="title-font text-xl text-orange-500 mb-2">KUBEK DRUTKHARINI</h4>
+                    <p class="text-gray-400"></p>
+                    <div class="prize-quantity">Ilość: 5 sztuk</div>
+                </div>
+                
+                <div class="prize-item p-6 rounded-xl">
+                    <div class="bg-gray-800 p-4 rounded-lg mb-4">
+                        <img src="https://wazzupek.pl/cdn/shop/products/bluzapremiummeskaprzodwazzupCZARNA_540x.jpg" 
+                             alt="Bluza Wazzup" 
+                             class="prize-image">
+                    </div>
+                    <h4 class="title-font text-xl text-orange-500 mb-2">BLUZA WAZZUP</h4>
+                    <p class="text-gray-400"></p>
+                    <div class="prize-quantity">Ilość: 5 sztuk</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Jak wziąć udział -->
+        <div class="mb-16 bg-gray-900 bg-opacity-50 p-8 rounded-xl border border-gray-700 animate__animated animate__fadeIn">
+            <h3 class="title-font text-3xl text-orange-500 mb-6 text-center">JAK WZIĄĆ UDZIAŁ?</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg text-center">
+                    <a href="https://mubi.pl/wazzup150" target="_blank" class="step-button inline-flex items-center justify-center w-16 h-16 rounded-full text-3xl font-bold text-white mb-4 mx-auto">
+                        1
+                    </a>
+                    <h4 class="title-font text-xl text-white mb-3">Wykonaj kalkulację</h4>
+                    <p class="text-gray-300">Dzięki niej będziesz mógł zaoszczędzić na swoim ubzpieczeniu i zgarnąć dodatkowe 100 zł.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg text-center">
+                    <div class="text-orange-500 text-3xl mb-4 font-bold">2</div>
+                    <h4 class="title-font text-xl text-white mb-3">Wypełnij formularz</h4>
+                    <p class="text-gray-300">Podaj swoje dane, numer porównania, który znajdziesz na stronie mubi i odpowiedź na pytanie konkursowe.</p>
+                </div>
+                
+                <div class="bg-gray-800 p-6 rounded-lg text-center">
+                    <div class="text-orange-500 text-3xl mb-4 font-bold">3</div>
+                    <h4 class="title-font text-xl text-white mb-3">Czekaj na wyniki</h4>
+                    <p class="text-gray-300">Laureatów konkursu poinformujemy poprzez email.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formularz konkursowy -->
+        <div id="contestForm" class="form-container p-8 rounded-xl animate__animated animate__fadeInUp">
+            <div class="flex flex-col md:flex-row gap-10 items-center">
+                <div class="flex-1">
+                    <img src="https://yt3.googleusercontent.com/ytc/AIdro_l7fTLK_o6DsXCTK2kVRHPpNUcBRUoz_zFrPAvPXf4iBf0=s900-c-k-c0x00ffffff-no-rj" 
+                         alt="Wazzup" 
+                         class="rounded-full w-48 h-48 border-4 border-orange-500 object-cover mx-auto mb-6 shadow-lg">
+                </div>
+                <div class="flex-1 w-full">
+                    <div class="mb-6">
+                        <label class="block text-orange-500 mb-2 title-font">IMIĘ</label>
+                        <input type="text" class="w-full px-5 py-4 input-field rounded-lg" placeholder="Wpisz swoje imię">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-orange-500 mb-2 title-font">NUMER PORÓWNANIA</label>
+                        <input type="text" class="w-full px-5 py-4 input-field rounded-lg" placeholder="Podaj numer porównania">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-orange-500 mb-2 title-font">ZA CO LUBISZ WAZZUPA?</label>
+                        <textarea class="w-full px-5 py-4 input-field rounded-lg h-32" placeholder="Napisz co Ci się podoba w Wazzupie..."></textarea>
+                    </div>
+                    <button class="mubi-button w-full py-4 px-6 rounded-lg font-bold text-xl">
+                        WYŚLIJ ZGŁOSZENIE
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stopka -->
+        <div class="mt-16 text-center text-gray-500 text-sm">
+            <p>Regulamin konkursu</p>
+            <p class="mt-2">© 2025 MCC. Wszystkie prawa zastrzeżone.</p>
+        </div>
+    </div>
+
+    <!-- Font Awesome dla ikon -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <!-- Skrypt do odliczania czasu -->
+    <script>
+        // Odliczanie do 30 kwietnia 2025
+        function updateCountdown() {
+            const endDate = new Date('April 30, 2025 23:59:59').getTime();
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').innerHTML = `
+                <span class="countdown-item">${days} <small>dni</small></span> :
+                <span class="countdown-item">${hours} <small>godz</small></span> :
+                <span class="countdown-item">${minutes} <small>min</small></span> :
+                <span class="countdown-item">${seconds} <small>sek</small></span>
+            `;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
